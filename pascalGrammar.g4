@@ -2,7 +2,6 @@ grammar pascalGrammar;
 
 start:PROGRAM ID PUNTOCOMA bloqueVariables BEGIN statements* END;
 
-
 //gramaticas
 
 bloqueVariables: VAR declaracion*;
@@ -65,6 +64,8 @@ tipo: INT|CHAR;
 
 
 //tokens
+
+// palabras reservadas
 PROGRAM: 'program';
 CHAR: 'char';
 IF: 'if';
@@ -90,24 +91,23 @@ OPERACIONESSUMAS: '+'|'-';
 OPERACIONESMUL: '*' | '/';
 USES: 'uses';
 
+// simbolos
 OPERADORES: '>' | '<' |'>=' |'<=' |'='|'<>';
 ASSIGN: ':=';
-
 LBRA: '{';
 RBRA: '}';
-
 LPAR: '(';
 RPAR: ')';
-
 PUNTOCOMA: ';';
 COMA: ',';
 DOSPUNTOS: ':';
 
+//otros
 ID: [a-zA-Z_][a-zA-Z0-9]*;
 NUMBER: [0-9]+;
 WS: [ \t\n\r]+ -> skip;
-
 STRING: '"' .*? '"';
 COMMENT: LBRA .*? RBRA -> skip;
 
+// errores
 ErrorCharacter : . ;
