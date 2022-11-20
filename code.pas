@@ -1,11 +1,10 @@
-program miprograma;
+program miprograma
 Var
     dato, var2, dat6: integer;
     dato5:char;
     dato, var2: integer;
     dato5:char;
 Begin
-    
     if a < 20 then
         dato := 10;
         {Este es un comentario jeje
@@ -20,7 +19,7 @@ Begin
 
     write(brandon);
 
-    for i:= 1 to 10 do
+    for i:= 1 to 10 d
         if a < 20 then
             for i:= 1 to 10 do
                 write("hola", brandon);
@@ -40,6 +39,8 @@ Begin
         i :=1;
     End;
 
+
+!!!
     repeat
       writeln("value of a: ", a);
       {prueba
