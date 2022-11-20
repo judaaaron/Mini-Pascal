@@ -50,8 +50,7 @@ escribirVariable: WRITE LPAR ID RPAR PUNTOCOMA
                   ;
 
 
-condiciones:
-            |ID OPERADORES ID
+condiciones: ID OPERADORES ID
             |NUMBER OPERADORES NUMBER
             |ID OPERADORES NUMBER
             |NUMBER OPERADORES ID
