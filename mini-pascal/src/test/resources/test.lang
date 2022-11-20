@@ -1,1 +1,8 @@
-hello world
+program miprograma{
+     var x;
+     write x;
+     x:=5;
+
+     write 5;
+
+}
