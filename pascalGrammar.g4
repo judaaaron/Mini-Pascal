@@ -110,4 +110,5 @@ STRING: '"' .*? '"';
 COMMENT: LBRA .*? RBRA -> skip;
 
 // errores
-ErrorCharacter : . ;
+ErrorCharacter : . {system.out.println("Error: caracter no reconocido");} ;
+

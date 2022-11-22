@@ -1,4 +1,4 @@
-program miprograma
+program miprograma;
 Var
     dato, var2, dat6: integer;
     dato5:char;
@@ -19,7 +19,7 @@ Begin
 
     write(brandon);
 
-    for i:= 1 to 10 d
+    for i:= 1 to 10 do
         if a < 20 then
             for i:= 1 to 10 do
                 write("hola", brandon);
@@ -40,7 +40,6 @@ Begin
     End;
 
 
-!!!
     repeat
       writeln("value of a: ", a);
       {prueba
@@ -52,6 +51,6 @@ Begin
     until a = 20;
 
     i := 4 + 1; 
-    i := 5 + (7*1)-bra; 
+    i := 5 + (7*1)-x; 
    
 End
