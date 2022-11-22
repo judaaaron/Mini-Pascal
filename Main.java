@@ -30,9 +30,9 @@ public class Main {
             int stop = offendingToken.getStopIndex();
             if (start >= 0 && stop >= 0) {
                 control = true;
-                // for (int i = start; i <= stop; i++)
+                for (int i = start; i <= stop; i++)
 
-                System.err.print("^");
+                    System.err.print("^");
             }
             System.err.println();
         }
@@ -45,6 +45,8 @@ public class Main {
         System.out.println("Analizando archivo " + program + "...");
         CharStream codePointCharStream = CharStreams.fromFileName(program);
         pascalGrammarLexer lexer = new pascalGrammarLexer(codePointCharStream);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(new VerboseListener());
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         pascalGrammarParser parser = new pascalGrammarParser(tokens);
         parser.removeErrorListeners();
