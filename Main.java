@@ -55,7 +55,9 @@ public class Main {
         ParseTree tree = parser.start();
         visitorPascal p = new visitorPascal();
         p.visit(tree);
-        if (control == false) {
+
+        boolean validacion = p.validar();
+        if (control == false && validacion == false) {
             System.out.println("El archivo " + program + " es correcto");
             int input = JOptionPane.showConfirmDialog(null, "Parse Tree generado con exito, desea visualizarlo?");
             switch (input) {
@@ -71,8 +73,14 @@ public class Main {
                     System.out.println("Opcion no valida");
             }
 
-        } else {
+        } else if (validacion == true && control == false) {
+            System.out.println("El archivo " + program + " tiene errores semanticos");
+        } else if (control == true && validacion == false) {
             System.out.println("El archivo " + program + " tiene errores lexicos y/o sintacticos");
+        } else {
+            System.out.println(
+                    "El archivo " + program + " tiene errores lexicos, sintacticos y semanticos");
         }
+
     }
 }

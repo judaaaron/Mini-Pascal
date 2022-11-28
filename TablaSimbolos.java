@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TablaSimbolos {
-    private ArrayList<fila> tablita = new ArrayList<fila>();
+    private ArrayList<fila> tablita = new ArrayList();
 
     public ArrayList<fila> getTablita() {
         return tablita;

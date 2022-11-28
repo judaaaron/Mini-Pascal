@@ -37,6 +37,16 @@ public interface pascalGrammarListener extends ParseTreeListener {
 	 */
 	void exitDeclaracion(pascalGrammarParser.DeclaracionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link pascalGrammarParser#tipo}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo(pascalGrammarParser.TipoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link pascalGrammarParser#tipo}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo(pascalGrammarParser.TipoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link pascalGrammarParser#statements}.
 	 * @param ctx the parse tree
 	 */
@@ -146,14 +156,4 @@ public interface pascalGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpr(pascalGrammarParser.ExprContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link pascalGrammarParser#tipo}.
-	 * @param ctx the parse tree
-	 */
-	void enterTipo(pascalGrammarParser.TipoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link pascalGrammarParser#tipo}.
-	 * @param ctx the parse tree
-	 */
-	void exitTipo(pascalGrammarParser.TipoContext ctx);
 }

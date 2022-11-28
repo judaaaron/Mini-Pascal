@@ -1,9 +1,9 @@
 program miprograma;
 Var
-    dato, var2:integer;
-    dato5, var3:char;
-    dato9, var4: integer;
-    dato3, var5:char;
+    dato, var2, dat6: intger;
+    dato9:char;
+    dato4, var1: integer;
+    dato5:car;
 Begin
     if a < 20 then
         dato := 10;
@@ -19,7 +19,7 @@ Begin
 
     write(brandon);
 
-    for i:= 1 to 10 do
+    for i: 1 to 10 do
         if a < 20 then
             for i:= 1 to 10 do
                 write("hola", brandon);
@@ -39,7 +39,6 @@ Begin
         i :=1;
     End;
 
-
     repeat
       writeln("value of a: ", a);
       {prueba
@@ -48,7 +47,7 @@ Begin
       comentario
       }
       a:=1;
-    until a = 20;
+    unil a = 20;
 
     i := 4 + 1; 
     i := 5 + (7*1)-x; 

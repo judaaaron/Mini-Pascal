@@ -17,9 +17,17 @@ start:
 
 bloqueVariables: VAR declaracion*;
 
+
+
 declaracion:
 	ID COMA declaracion 
 	| ID DOSPUNTOS tipo PUNTOCOMA;
+
+tipo:
+	INT 
+	|CHAR
+	|BOOLEAN
+	;
 
 statements:
 	asignacion
@@ -66,11 +74,7 @@ expr:
 	| ID
 	| '(' expr ')';
 
-tipo:
-	INT 
-	|CHAR
-	|BOOLEAN
-	;
+
 
 
 //tokens

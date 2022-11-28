@@ -1,8 +1,8 @@
 program miprograma;
-Va
-    dato, var2, dat6: integer;
+Var
+    dato, var2, dat6: intger;
     dato5:char;
-    dato, var2: intger;
+    dato, var2: integer;
     dato5:car;
 Begin
     if a < 20 then

@@ -28,6 +28,12 @@ public interface pascalGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclaracion(pascalGrammarParser.DeclaracionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link pascalGrammarParser#tipo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo(pascalGrammarParser.TipoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link pascalGrammarParser#statements}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -93,10 +99,4 @@ public interface pascalGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitExpr(pascalGrammarParser.ExprContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link pascalGrammarParser#tipo}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTipo(pascalGrammarParser.TipoContext ctx);
 }

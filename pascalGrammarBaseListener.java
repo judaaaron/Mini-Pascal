@@ -52,6 +52,18 @@ public class pascalGrammarBaseListener implements pascalGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipo(pascalGrammarParser.TipoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipo(pascalGrammarParser.TipoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStatements(pascalGrammarParser.StatementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -179,18 +191,6 @@ public class pascalGrammarBaseListener implements pascalGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpr(pascalGrammarParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTipo(pascalGrammarParser.TipoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTipo(pascalGrammarParser.TipoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
