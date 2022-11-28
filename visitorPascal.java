@@ -55,25 +55,22 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         return visitChildren(ctx);
     }
 
-    String ID;
-
     @Override
     public Object visitDeclaracion(pascalGrammarParser.DeclaracionContext ctx) {
-        ID = ctx.ID().toString();
+        String ID = ctx.ID().toString();
         int contador = 0;
         for (int i = 0; i < sizeTabla; i++) {
             if (simbolos.getTablita().get(i).getIdentificador().equals(ID)) {
                 contador++;
-                if (contador > 1) {
-                    System.out.println("Variable  '" + ID + "' ya ha sido declarada");
-                    validacion = true;
-                    contador = 0;
-                } else {
-                    validacion = false;
-                }
             }
         }
 
+        if (contador > 1) {
+            System.out.println("Variable  '" + ID + "' ya ha sido declarada");
+            validacion = true;
+        } else {
+            validacion = false;
+        }
         return visitChildren(ctx);
     }
 
