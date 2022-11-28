@@ -55,28 +55,24 @@ public class Main {
         ParseTree tree = parser.start();
         visitorPascal p = new visitorPascal();
         p.visit(tree);
-        // if (control == false) {
-        // System.out.println("El archivo " + program + " es correcto");
-        // int input = JOptionPane.showConfirmDialog(null, "Parse Tree generado con
-        // exito, desea visualizarlo?");
-        // switch (input) {
-        // case 0:
-        // System.out.println("Generando Parse Tree");
-        // String arbol = "cmd /c start cmd.exe /K \"grun pascalGrammar start " +
-        // program + " -gui";
-        // Runtime.getRuntime().exec(arbol);
-        // break;
-        // case 1:
-        // System.out.println("Necesitas ejecutar ultimo comando para visualizar el
-        // Parse Tree");
-        // break;
-        // default:
-        // System.out.println("Opcion no valida");
-        // }
+        if (control == false) {
+            System.out.println("El archivo " + program + " es correcto");
+            int input = JOptionPane.showConfirmDialog(null, "Parse Tree generado con exito, desea visualizarlo?");
+            switch (input) {
+                case 0:
+                    System.out.println("Generando Parse Tree");
+                    String arbol = "cmd /c start cmd.exe /K \"grun pascalGrammar start " + program + " -gui";
+                    Runtime.getRuntime().exec(arbol);
+                    break;
+                case 1:
+                    System.out.println("Necesitas ejecutar ultimo comando para visualizar el Parse Tree");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
 
-        // } else {
-        // System.out.println("El archivo " + program + " tiene errores lexicos y/o
-        // sintacticos");
-        // }
+        } else {
+            System.out.println("El archivo " + program + " tiene errores lexicos y/o sintacticos");
+        }
     }
 }
