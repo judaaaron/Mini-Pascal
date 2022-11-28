@@ -39,8 +39,6 @@ Begin
         i :=1;
     End;
 
-
-
     repeat
       writeln("value of a: ", a);
       {prueba

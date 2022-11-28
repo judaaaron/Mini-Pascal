@@ -128,7 +128,7 @@ public class pascalGrammarLexer extends Lexer {
 	private void ErrorCharacter_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
 		case 0:
-			system.out.println("Error: caracter no reconocido");
+			System.out.println("Error: caracter no reconocido");
 			break;
 		}
 	}

@@ -28,7 +28,7 @@ Begin
             for i:= 1 to 10 do
                 write("hola", brandon);
 
-    writeln(i);
+    write(i);
     
     while i <= 5 do Begin
          if a < 20 then

@@ -2,6 +2,7 @@ import org.antlr.v4.runtime.*;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import org.antlr.v4.runtime.tree.ParseTree;
 
 public class Main {
     static boolean control = false;
@@ -51,25 +52,31 @@ public class Main {
         pascalGrammarParser parser = new pascalGrammarParser(tokens);
         parser.removeErrorListeners();
         parser.addErrorListener(new VerboseListener());
-        parser.start();
-        if (control == false) {
-            System.out.println("El archivo " + program + " es correcto");
-            int input = JOptionPane.showConfirmDialog(null, "Parse Tree generado con exito, desea visualizarlo?");
-            switch (input) {
-                case 0:
-                    System.out.println("Generando Parse Tree");
-                    String arbol = "cmd /c start cmd.exe /K \"grun pascalGrammar start " + program + " -gui";
-                    Runtime.getRuntime().exec(arbol);
-                    break;
-                case 1:
-                    System.out.println("Necesitas ejecutar ultimo comando para visualizar el Parse Tree");
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-            }
+        ParseTree tree = parser.start();
+        visitorPascal p = new visitorPascal();
+        p.visit(tree);
+        // if (control == false) {
+        // System.out.println("El archivo " + program + " es correcto");
+        // int input = JOptionPane.showConfirmDialog(null, "Parse Tree generado con
+        // exito, desea visualizarlo?");
+        // switch (input) {
+        // case 0:
+        // System.out.println("Generando Parse Tree");
+        // String arbol = "cmd /c start cmd.exe /K \"grun pascalGrammar start " +
+        // program + " -gui";
+        // Runtime.getRuntime().exec(arbol);
+        // break;
+        // case 1:
+        // System.out.println("Necesitas ejecutar ultimo comando para visualizar el
+        // Parse Tree");
+        // break;
+        // default:
+        // System.out.println("Opcion no valida");
+        // }
 
-        } else {
-            System.out.println("El archivo " + program + " tiene errores lexicos y/o sintacticos");
-        }
+        // } else {
+        // System.out.println("El archivo " + program + " tiene errores lexicos y/o
+        // sintacticos");
+        // }
     }
 }

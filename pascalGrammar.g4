@@ -1,66 +1,76 @@
 grammar pascalGrammar;
 
-start:PROGRAM ID PUNTOCOMA bloqueVariables BEGIN statements* END;
+// @parser::header {
+//     import java.util.Map;
+//     import java.util.HashMap;
+// }
+
+// @parser::members {
+//     private Map<String, Integer> variables = new HashMap<String, Integer>();
+// }
+
+
+start:
+	PROGRAM ID PUNTOCOMA bloqueVariables BEGIN statements* END EOF;
 
 //gramaticas
 
 bloqueVariables: VAR declaracion*;
 
-declaracion: ID COMA declaracion 
-            |ID DOSPUNTOS tipo PUNTOCOMA
-            ;
+declaracion:
+	ID COMA declaracion 
+	| ID DOSPUNTOS tipo PUNTOCOMA;
 
-statements: asignacion
-            |bloqueIf
-            |bloqueFor
-            |leerVariable
-            |escribirVariable
-            |bloqueWhile
-            |bloqueRepeat
-            
-            ;
+statements:
+	asignacion
+	| bloqueIf
+	| bloqueFor
+	| leerVariable
+	| escribirVariable
+	| bloqueWhile
+	| bloqueRepeat;
 
-asignacion: ID ASSIGN NUMBER PUNTOCOMA
-            |ID ASSIGN expr PUNTOCOMA
-            ;
+asignacion:
+	ID ASSIGN NUMBER PUNTOCOMA
+	| ID ASSIGN expr PUNTOCOMA;
 
 bloqueIf: IF condiciones THEN statements* bloqueElse;
 
-bloqueElse: ELSE statements*
-     | ELSE bloqueIf
-     |
-     ;
-
+bloqueElse: ELSE statements* | ELSE bloqueIf |;
 
 bloqueFor: FOR ID ASSIGN NUMBER TO NUMBER DO statements*;
 
-bloqueWhile: WHILE condiciones DO BEGIN statements* END PUNTOCOMA;
+bloqueWhile:
+	WHILE condiciones DO BEGIN statements* END PUNTOCOMA;
 
 bloqueRepeat: REPEAT statements* UNTIL condiciones PUNTOCOMA;
 
 leerVariable: READ LPAR ID RPAR PUNTOCOMA;
 
-escribirVariable: WRITE LPAR ID RPAR PUNTOCOMA
-                  |WRITE LPAR STRING COMA ID RPAR PUNTOCOMA
-                  |WRITE LPAR STRING RPAR PUNTOCOMA
-                  ;
+escribirVariable:
+	WRITE LPAR ID RPAR PUNTOCOMA
+	| WRITE LPAR STRING COMA ID RPAR PUNTOCOMA
+	|WRITE LPAR STRING RPAR PUNTOCOMA
+    ;
 
+condiciones:
+	ID OPERADORES ID
+	| NUMBER OPERADORES NUMBER
+	| ID OPERADORES NUMBER
+	| NUMBER OPERADORES ID;
 
-condiciones: ID OPERADORES ID
-            |NUMBER OPERADORES NUMBER
-            |ID OPERADORES NUMBER
-            |NUMBER OPERADORES ID
-;
+expr:
+	expr OPERACIONESMUL expr
+	| expr OPERACIONESSUMAS expr
+	| NUMBER
+	| ID
+	| '(' expr ')';
 
-expr:   expr OPERACIONESMUL expr
-    |   expr OPERACIONESSUMAS expr
-    |   NUMBER
-    |   ID
-    |   '(' expr ')'
-    ;          
-
-            
-tipo: INT|CHAR;
+tipo:
+	INT 
+	|CHAR
+	|BOOLEAN
+	;
 
 
 //tokens
@@ -73,26 +83,26 @@ ELSE: 'else';
 INT: 'integer';
 BOOLEAN: 'boolean';
 REPEAT: 'repeat';
-FOR: 'for';            
+FOR: 'for';
 UNTIL: 'until';
 AND: 'and';
 OR: 'or';
 NOT: 'not';
 VAR: 'Var';
 READ: 'read';
-WRITE: 'write'|'writeln';
-BEGIN: 'Begin'|'begin';
-END: 'End'|'end';
+WRITE: 'write' | 'writeln';
+BEGIN: 'Begin' | 'begin';
+END: 'End' | 'end';
 WHILE: 'while';
 THEN: 'then';
 DO: 'do';
 TO: 'to';
-OPERACIONESSUMAS: '+'|'-';
+OPERACIONESSUMAS: '+' | '-';
 OPERACIONESMUL: '*' | '/';
 USES: 'uses';
 
 // simbolos
-OPERADORES: '>' | '<' |'>=' |'<=' |'='|'<>';
+OPERADORES: '>' | '<' | '>=' | '<=' | '=' | '<>';
 ASSIGN: ':=';
 LBRA: '{';
 RBRA: '}';
@@ -110,5 +120,4 @@ STRING: '"' .*? '"';
 COMMENT: LBRA .*? RBRA -> skip;
 
 // errores
-ErrorCharacter : . {system.out.println("Error: caracter no reconocido");} ;
-
+ErrorCharacter: . {System.out.println("Error: caracter no reconocido");};
