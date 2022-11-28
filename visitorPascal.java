@@ -34,7 +34,7 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
 
         String cadena = ctx.getText();
         String cadena2 = cadena.substring(3, cadena.length());
-        System.out.println("Bloque de variables " + cadena2 + " ");
+        // System.out.println("Bloque de variables " + cadena2 + " ");
         String[] ultracompleta = cadena2.split(";");
         for (int i = 0; i < ultracompleta.length; i++) {
             String[] completa = ultracompleta[i].split(":");
@@ -55,51 +55,25 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
+    String ID;
+
     @Override
     public Object visitDeclaracion(pascalGrammarParser.DeclaracionContext ctx) {
-
+        ID = ctx.ID().toString();
+        int contador = 0;
         for (int i = 0; i < sizeTabla; i++) {
-            System.out.println("Variable: " + simbolos.getTablita().get(i).getIdentificador() + " Tipo: "
-                    + simbolos.getTablita().get(i).getTipo() + " En declaracion");
+            if (simbolos.getTablita().get(i).getIdentificador().equals(ID)) {
+                contador++;
+                if (contador > 1) {
+                    System.out.println("Variable  '" + ID + "' ya ha sido declarada");
+                    validacion = true;
+                    contador = 0;
+                } else {
+                    validacion = false;
+                }
+            }
         }
 
-        // System.out.println(ctx.tipo() + " tipo" + tipo);
-
-        // String id = ctx.ID().toString();
-        // System.out.println("Tamaño de la tabla: " + simbolos.getTablita().size());
-        // boolean existe = false;
-        // for (fila f : simbolos.getTablita()) {
-        // if (f.getIdentificador().equals(id)) {
-        // existe = true;
-        // break;
-        // }
-        // }
-        // if (!existe) {
-        // simbolos.getTablita().add(new fila(id, tipo));
-        // } else {
-        // for (fila f : simbolos.getTablita()) {
-        // if (f.getIdentificador().equals(id)) {
-        // System.out.println("Error semantico variable " + f.getIdentificador() + " ya
-        // ha sido declarada");
-        // }
-        // }
-
-        // validacion = true;
-        // }
-        // existe = false;
-
-        // for (fila f : simbolos.getTablita()) {
-        // System.out.println("Identificador: " + f.getIdentificador() + " Tipo: " +
-        // f.getTipo());
-        // }
         return visitChildren(ctx);
     }
 
@@ -109,14 +83,6 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitStatements(pascalGrammarParser.StatementsContext ctx) {
         return visitChildren(ctx);
@@ -253,6 +219,7 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
     }
 
     public boolean validar() {
+        // simbolos.print();
         return validacion;
     }
 }

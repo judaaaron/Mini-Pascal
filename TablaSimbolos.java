@@ -11,4 +11,10 @@ public class TablaSimbolos {
         this.tablita = tablita;
     }
 
+    public void print() {
+        for (fila f : tablita) {
+            System.out.println("Identificador: " + f.getIdentificador() + " Tipo: " + f.getTipo());
+        }
+    }
+
 }

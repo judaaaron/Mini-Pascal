@@ -1,9 +1,9 @@
 program miprograma;
 Var
-    dato, var2:integer;
-    dato5, var3:char;
+    dato, var2, var14:integer;
+    dato, var3:char;
     dato9, var4: integer;
-    dato3, var5:char;
+    dato3, var2:char;
 Begin
     if a < 20 then
         dato := 10;
