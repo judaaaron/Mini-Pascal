@@ -4,14 +4,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("CheckReturnValue")
 public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
+
     TablaSimbolos simbolos = new TablaSimbolos();
     boolean validacion = false;
     int sizeTabla;
@@ -21,19 +14,7 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
-
-    // String tipo = "";
-
     @Override
-
     public Object visitBloqueVariables(pascalGrammarParser.BloqueVariablesContext ctx) {
 
         String cadena = ctx.getText();
@@ -53,8 +34,6 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         }
 
         sizeTabla = simbolos.getTablita().size();
-        // String Tipos="";
-        // String Ids = "";
 
         return visitChildren(ctx);
     }
@@ -89,14 +68,6 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     ArrayList<Boolean> control = new ArrayList<Boolean>();
 
     @Override
@@ -105,10 +76,6 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
 
         String ID = ctx.ID().toString();
         String expresion = ctx.expr().getText();
-
-        // Get the data type of the ID
-
-        // Check if the value is a number
 
         if (isNumber(expresion)) {
             for (int i = 0; i < sizeTabla; i++) {
@@ -158,17 +125,6 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
 
         return visitChildren(ctx);
 
-        // id el simbolo operaciones con ids
-
-        // la operacion sea con lo
-        // un int numero := 10* numero2
-        // donde numero2 es int
-        // un float numero
-        // recuperrar el tipo de el id al que se le va a asignar
-
-        // ID := 5
-        // ID := 'a'
-
     }
 
     // This method takes an ID as an argument and returns the data type of the ID
@@ -195,118 +151,46 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitBloqueIf(pascalGrammarParser.BloqueIfContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitBloqueElse(pascalGrammarParser.BloqueElseContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitBloqueFor(pascalGrammarParser.BloqueForContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitBloqueWhile(pascalGrammarParser.BloqueWhileContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitBloqueRepeat(pascalGrammarParser.BloqueRepeatContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitLeerVariable(pascalGrammarParser.LeerVariableContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitEscribirVariable(pascalGrammarParser.EscribirVariableContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitCondiciones(pascalGrammarParser.CondicionesContext ctx) {
         return visitChildren(ctx);
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>
-     * The default implementation returns the result of calling
-     * {@link #visitChildren} on {@code ctx}.
-     * </p>
-     */
     @Override
     public Object visitExpr(pascalGrammarParser.ExprContext ctx) {
         return visitChildren(ctx);
