@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+
 @SuppressWarnings("CheckReturnValue")
 public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
     /**
@@ -93,9 +97,102 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
      * {@link #visitChildren} on {@code ctx}.
      * </p>
      */
+    ArrayList<Boolean> control = new ArrayList<Boolean>();
+
     @Override
+
     public Object visitAsignacion(pascalGrammarParser.AsignacionContext ctx) {
+
+        String ID = ctx.ID().toString();
+        String expresion = ctx.expr().getText();
+
+        // Get the data type of the ID
+
+        // Check if the value is a number
+
+        if (isNumber(expresion)) {
+            for (int i = 0; i < sizeTabla; i++) {
+                if (simbolos.getTablita().get(i).getIdentificador().equals(ID)) {
+                    if (simbolos.getTablita().get(i).getTipo().equals("integer")) {
+
+                        control.add(false);
+                    } else {
+                        System.out.println("La asignacion de " + ID + " es incorrecta" + " es de tipo "
+                                + simbolos.getTablita().get(i).getTipo()
+                                + " y se le esta asignando tipo de dato integer");
+                        control.add(true);
+                    }
+                }
+            }
+
+        } else if (expresion.equals("true") || expresion.equals("false")) {
+            for (int i = 0; i < sizeTabla; i++) {
+                if (simbolos.getTablita().get(i).getIdentificador().equals(ID)) {
+                    if (simbolos.getTablita().get(i).getTipo().equals("boolean")) {
+                        control.add(false);
+                    } else {
+                        System.out.println("La asignacion de " + ID + " es incorrecta" + " es de tipo "
+                                + simbolos.getTablita().get(i).getTipo()
+                                + " y se le esta asignando tipo de dato Boolean");
+                        control.add(true);
+                    }
+                }
+            }
+        } else if (expresion.length() == 1) {
+            // es caracter
+            for (int i = 0; i < sizeTabla; i++) {
+                if (simbolos.getTablita().get(i).getIdentificador().equals(ID)) {
+                    if (simbolos.getTablita().get(i).getTipo().equals("char")) {
+                        control.add(false);
+                    } else {
+                        System.out.println("La asignacion de " + ID + " es incorrecta" + " es de tipo "
+                                + simbolos.getTablita().get(i).getTipo()
+                                + " y se le esta asignando tipo de dato char");
+                        control.add(true);
+                    }
+                }
+            }
+        } else {
+            System.err.println("cadena compuesta");
+        }
+
         return visitChildren(ctx);
+
+        // id el simbolo operaciones con ids
+
+        // la operacion sea con lo
+        // un int numero := 10* numero2
+        // donde numero2 es int
+        // un float numero
+        // recuperrar el tipo de el id al que se le va a asignar
+
+        // ID := 5
+        // ID := 'a'
+
+    }
+
+    // This method takes an ID as an argument and returns the data type of the ID
+    public String getDataType(String ID) {
+        // You can use a map to store the data types of the IDs in your program
+        Map<String, String> dataTypes = new HashMap<>();
+        // Add some sample data types to the map
+        dataTypes.put("x", "integer");
+        dataTypes.put("y", "real");
+        dataTypes.put("z", "string");
+        // Return the data type of the ID from the map
+        return dataTypes.get(ID);
+    }
+
+    // This method takes a value as an argument and returns true if the value is a
+    // number, and false otherwise
+    public boolean isNumber(String value) {
+        // Try to parse the value as a number
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
@@ -217,6 +314,13 @@ public class visitorPascal extends pascalGrammarBaseVisitor<Object> {
 
     public boolean validar() {
         // simbolos.print();
+        validacion = false;
+        for (int i = 0; i < control.size(); i++) {
+            if (control.get(i) == true) {
+                validacion = true;
+                break;
+            }
+        }
         return validacion;
     }
 }

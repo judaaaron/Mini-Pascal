@@ -1,18 +1,19 @@
 program miprograma;
 Var
-    dato, var2, var14:integer;
-    dato, var3:char;
+    var14:integer;
+    dato, var3: char;
     dato9, var4: integer;
     dato3, var2:char;
+    dat33:boolean;
 Begin
     if a < 20 then
-        dato := 10;
+        dat33 := True;
         {Este es un comentario jeje
          viva argentina
         
         }
     else if a < 30 then
-        dato := 20;
+        dato := f;
     else
         write("hola", brandon);
         read(dato);
@@ -49,8 +50,10 @@ Begin
       }
       a:=1;
     until a = 20;
-
-    i := 4 + 1; 
-    i := 5 + (7*1)-x; 
+    var2 := c;
+    dat33 := true;
+    var14 := 420;
+   
+    
    
 End

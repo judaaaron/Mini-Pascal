@@ -38,9 +38,7 @@ statements:
 	| bloqueWhile
 	| bloqueRepeat;
 
-asignacion:
-	ID ASSIGN NUMBER PUNTOCOMA
-	| ID ASSIGN expr PUNTOCOMA;
+asignacion:ID ASSIGN expr PUNTOCOMA;
 
 bloqueIf: IF condiciones THEN statements* bloqueElse;
 
@@ -72,7 +70,12 @@ expr:
 	| expr OPERACIONESSUMAS expr
 	| NUMBER
 	| ID
-	| '(' expr ')';
+	| '(' expr ')'
+	| TRUE
+	| FALSE
+	;
+	
+
 
 
 
@@ -104,6 +107,8 @@ TO: 'to';
 OPERACIONESSUMAS: '+' | '-';
 OPERACIONESMUL: '*' | '/';
 USES: 'uses';
+TRUE: 'true'| 'True';
+FALSE: 'false' | 'False';
 
 // simbolos
 OPERADORES: '>' | '<' | '>=' | '<=' | '=' | '<>';
